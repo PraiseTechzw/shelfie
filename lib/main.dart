@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:shelfie/screens/book_selection_screen.dart';
-import 'package:shelfie/screens/bookshelf_screen.dart';
-import 'package:shelfie/screens/share_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'core/theme/app_theme.dart';
+import 'features/resume/presentation/screens/home_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Shelfie',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => BookSelectionScreen(),
-        '/organize': (context) => BookshelfScreen(),
-        '/share': (context) => ShareScreen(),
-      },
+      title: 'Flutter PDF Demo',
+      theme: AppTheme.lightTheme,
+      home: const HomeScreen(),
     );
   }
 }
+
